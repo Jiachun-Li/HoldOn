@@ -22,8 +22,6 @@ while cap.isOpened():
     # 人脸 / Faces
     faces = detector(img_rd, 0)
 
-    # 待会要写的字体 / Font to write
-    font = cv2.FONT_ITALIC
     # 复制，用于照相
     frame = img_rd.copy()
 
