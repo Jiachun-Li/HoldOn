@@ -9,8 +9,7 @@ detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 # 建cv2摄像头对象，参数0表示打开电脑自带的摄像头，如果换了外部摄像头，则自动切换到外部摄像头
 cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
-# set(propId, value),设置视频参数，propId设置视频参数， value设置参数值
-#cap.set(3, 480)
+
 # 截取 screenshoot 的计数器
 i = 1
 
@@ -43,13 +42,13 @@ while cap.isOpened():
 
 
 
-    # 6. 按下 'q' 键退出 / Press 'q' to exit
+    # 6. 按下 'Esc' 键退出
     if kk == 27:
         print('goodbye')
         break
+    # 按下'q'键拍照
     elif kk == ord('q'):
-
-        cv2.imwrite('zz' + str(i) + '.jpg', frame)
+        cv2.imwrite('MyPhoto' + str(i) + '.jpg', frame)
         print(i)
         i += 1
 
