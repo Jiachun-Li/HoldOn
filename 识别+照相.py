@@ -34,10 +34,16 @@ while cap.isOpened():
             pos_start = tuple([d.left(), d.top()])
             pos_end = tuple([d.right(), d.bottom()])
 
-            # 计算矩形框大小 / compute the size of rectangle box
-            height = (d.bottom() - d.top())
-            width = (d.right() - d.left())
-            cv2.rectangle(img_rd, tuple([d.left(), d.top()]), tuple([d.right(), d.bottom()]), (0, 255, 255), 2)
+            face_height = (d.bottom() - d.top())
+            face_width = (d.right() - d.left())
+
+            cv2.rectangle(img_rd, pos_start, pos_end, (0, 255, 255), 2)
+            shape = predictor(img_rd, d)
+            for i in range(68):
+                # 标出68点
+                cv2.circle(img_rd, (shape.part(i).x, shape.part(i).y), 2, (0, 255, 0), 1)
+                #cv2.putText(img_rd, str(i), (shape.part(i).x, shape.part(i).y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255))
+                
 
 
 
