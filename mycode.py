@@ -14,9 +14,6 @@ happy：嘴宽度大
 """
 
 
-import os
-
-
 def cartoonise(picture_name, j):
 
     num_bilateral = 7  # 定义双边滤波的数目
