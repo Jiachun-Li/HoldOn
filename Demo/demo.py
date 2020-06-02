@@ -110,25 +110,10 @@ while cap.isOpened():
             # print("嘴巴高度与识别框宽度之比：" , mouth_height)
             eye_height = (shape.part(41).y - shape.part(37).y) / face_height
             #print("eye", eye_height)
-            brow_sum = 0  # 高度之和
             frown_sum = 0  # 两边眉毛距离之和
-            line_brow_x = []
-            line_brow_y = []
             for j in range(17, 21):
-                brow_sum += (shape.part(j).y - d.top()) + (shape.part(j + 5).y - d.top())
                 frown_sum += shape.part(j + 5).x - shape.part(j).x
-                line_brow_x.append(shape.part(j).x)
-                line_brow_y.append(shape.part(j).y)
-
-                # self.brow_k, self.brow_d = self.fit_slr(line_brow_x, line_brow_y) # 计算眉毛的倾斜程度
-            tempx = np.array(line_brow_x)
-            tempy = np.array(line_brow_y)
-            z1 = np.polyfit(tempx, tempy, 1)  # 拟合成一次直线
-            brow_k = -round(z1[0], 3)  # 拟合出曲线的斜率和实际眉毛的倾斜方向是相反的
             frown_sum = frown_sum / face_width
-                #print(brow_k)
-
-                #print(frown_sum/face_width)
 
 
             if mouth_width >= 0.34:
