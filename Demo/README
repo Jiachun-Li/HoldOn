@@ -1,3 +1,5 @@
+pip install dlib
+下载并解压 http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2
 在与demo.py同一路径下建立angry cartoon disgust fear happy nature sad surprise 八个文件夹
 运行代码
 按“q”拍照并处理照片
