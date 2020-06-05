@@ -1,6 +1,6 @@
 import cv2  # 图像处理的库 OpenCv
 import dlib  # 人脸识别的库 dlib
-import numpy as np  # 数据处理的库 numpy
+
 
 # 开心 惊讶 正常 愤怒 悲伤 恐惧 厌恶
 """
@@ -11,7 +11,11 @@ fear：皱眉眼睛大张嘴y
 sad：皱眉，眼睛小
 happy：嘴宽度大y#
 """
-
+def screenshoot(emotion, num):
+    name = f'{emotion}/picture{num}' + '.jpg'
+    cv2.imwrite(name, draw_img)
+    cartoonise(str(emotion), name, num)
+    print(f"{emotion},{num}")
 
 def puttext(emotion, cartoon, name):
     cv2.putText(cartoon, "hello", (d.left(), d.bottom() + 30), font, 1, (0, 0, 0), 2)
@@ -116,20 +120,14 @@ while cap.isOpened():
                     cv2.putText(frame, "disgust", (d.left(), d.bottom() + 20), cv2.FONT_HERSHEY_SIMPLEX, 1,
                                 (0, 0, 255), 2, 4)
                     if kk == ord('q'):
-                        name = 'disgust/picture' + str(disgust) + '.jpg'
-                        cv2.imwrite(name, draw_img)
-                        cartoonise("disgust", name, disgust)
-                        print("disgust", disgust)
+                        screenshoot("disgust", disgust)
                         disgust += 1
 
                 else:
                     cv2.putText(frame, "happy", (d.left(), d.bottom() + 20), cv2.FONT_HERSHEY_SIMPLEX, 1,
                                 (0, 0, 255), 2, 4)
                     if kk == ord('q'):
-                        name = 'happy/picture' + str(happy) + '.jpg'
-                        cv2.imwrite(name, draw_img)
-                        cartoonise("happy", name, happy)
-                        print("happy", happy)
+                        screenshoot("happy", happy)
                         happy += 1
 
             elif mouth_height >= 0.05:
@@ -137,19 +135,13 @@ while cap.isOpened():
                     cv2.putText(frame, "fear", (d.left(), d.bottom() + 20), cv2.FONT_HERSHEY_SIMPLEX, 1,
                                 (0, 0, 255), 2, 4)
                     if kk == ord('q'):
-                        name = 'fear/picture' + str(fear) + '.jpg'
-                        cv2.imwrite(name, draw_img)
-                        cartoonise("fear", name, fear)
-                        print("fear", fear)
+                        screenshoot("fear", fear)
                         fear += 1
                 else:
                     cv2.putText(frame, "surprise", (d.left(), d.bottom() + 20), cv2.FONT_HERSHEY_SIMPLEX, 1,
                                 (0, 0, 255), 2, 4)
                     if kk == ord('q'):
-                        name = 'surprise/picture' + str(surprise) + '.jpg'
-                        cv2.imwrite(name, draw_img)
-                        cartoonise("surprise", name, surprise)
-                        print("surprise", surprise)
+                        screenshoot("surprise", surprise)
                         surprise += 1
 
             elif mouth_width <= 0.26:
@@ -157,28 +149,19 @@ while cap.isOpened():
                     cv2.putText(frame, "sad", (d.left(), d.bottom() + 20), cv2.FONT_HERSHEY_SIMPLEX, 1,
                                 (0, 0, 255), 2, 4)
                     if kk == ord('q'):
-                        name = 'sad/picture' + str(sad) + '.jpg'
-                        cv2.imwrite(name, draw_img)
-                        cartoonise("sad", name, sad)
-                        print("sad", sad)
+                        screenshoot("sad", sad)
                         sad += 1
                 else:
                     cv2.putText(frame, "angry", (d.left(), d.bottom() + 20), cv2.FONT_HERSHEY_SIMPLEX, 1,
                                 (0, 0, 255), 2, 4)
                     if kk == ord('q'):
-                        name = 'angry/picture' + str(angry) + '.jpg'
-                        cv2.imwrite(name, draw_img)
-                        cartoonise("angry", name, angry)
-                        print("angry", angry)
+                        screenshoot("angry", angry)
                         angry += 1
             else:
                 cv2.putText(frame, "nature", (d.left(), d.bottom() + 20), cv2.FONT_HERSHEY_SIMPLEX, 1,
                             (0, 0, 255), 2, 4)
                 if kk == ord('q'):
-                    name = 'nature/picture' + str(nature) + '.jpg'
-                    cv2.imwrite(name, draw_img)
-                    cartoonise("nature", name, nature)
-                    print("nature", nature)
+                    screenshoot("nature", nature)
                     nature += 1
 
     else:
