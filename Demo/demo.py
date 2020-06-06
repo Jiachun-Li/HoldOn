@@ -4,12 +4,12 @@ import random
 
 # 开心 惊讶 自然 愤怒 悲伤 恐惧 厌恶
 """
-surprise：不皱眉张嘴
+happy：咧嘴不皱眉
 disgust：咧嘴皱眉
-angry：皱眉眼睛大
+surprise：不皱眉张嘴
 fear：皱眉眼睛大张嘴
-sad：皱眉，眼睛小
-happy：嘴宽度大
+angry：撅嘴皱眉眼睛大
+sad：撅嘴眼睛小
 """
 
 
